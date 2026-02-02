@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footer {
+    width: 100%;
+    background-color: #1e1e2f;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer p {
+    margin: 6px 0;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.footer strong {
+    color: #4db8ff;
+}
