@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import "../style/ExpenseModal.css";
+import {CATEGORIES} from"../constants/categories";
 
 export default function IncomeModal({ onClose, addTransaction }) {
   const [text, setText] = useState('');
@@ -51,12 +52,18 @@ export default function IncomeModal({ onClose, addTransaction }) {
             step="0.01"
           />
 
-          <input
-            type="text"
-            placeholder="Category (optional)"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
+          <select 
+            value = {category}
+            onChange = {(e) => setCategory(e.target.value)}
+            className = "category-select"
+            required
+            >
+              <option value = "" disabled>Select a Category</option>
+              {CATEGORIES.INCOME.map((cart) => (
+                <option key = {cart.value} value = {cart.value}>{cart.label}</option>
+              ))}
+            </select>
+
 
           <div className="modal-buttons">
             <button type="submit" className="income-btn">Add Income</button>

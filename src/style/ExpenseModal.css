@@ -106,3 +106,41 @@
         padding: 20px;
     }
 }
+
+/* Category Select Dropdown */
+.category-select {
+  width: 90%;
+  padding: 12px;
+  margin-bottom: 14px;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Focus state */
+.category-select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* For Expense Modal specific */
+.expense-modal .category-select:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+/* For Income Modal specific */
+.income-modal .category-select:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* Option styling */
+.category-select option {
+  padding: 10px;
+  font-size: 1rem;
+}

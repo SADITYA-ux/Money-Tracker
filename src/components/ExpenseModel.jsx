@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import "../style/ExpenseModal.css";
+import {CATEGORIES} from"../constants/categories";
 
 export default function ExpenseModel({ onClose, addTransaction }) {
   const [text, setText] = useState('');
   const [amount, setAmount] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('food');
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
@@ -48,12 +49,17 @@ export default function ExpenseModel({ onClose, addTransaction }) {
             onChange={(e) => setAmount(e.target.value)}
           />
 
-          <input
-            type="text"
-            placeholder="Category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
+          <select 
+            value = {category}
+            onChange = {(e) => setCategory(e.target.value)}
+            className = "category-select"
+            required
+          >
+            <option value = "" disabled>Select a Category</option>
+            {CATEGORIES.EXPENSE.map((cart) => (
+              <option key = {cart.value} value = {cart.value}>{cart.label}</option>
+            ))}
+            </select>
 
           <div className="modal-buttons">
             <button type="submit">Add Expense</button>
