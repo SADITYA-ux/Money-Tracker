@@ -1,146 +1,167 @@
-/* Dark overlay */
+/* ================================
+   Modal Overlay
+================================ */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    border: 5px solid black;
-    border-radius: 10px;
-    padding: 5px;
-    z-index: 9999;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
 }
 
-/* Modal box */
+/* ================================
+   Modal Container
+================================ */
 .modal-content {
-    background: #ffffff;
-    width: 90%;
-    max-width: 420px;
-    padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    animation: slideIn 0.3s ease-out;
-}
-
-/* Title */
-.modal-content h2 {
-    margin-bottom: 20px;
-    text-align: center;
-    color: #1f2933;
-}
-
-/* Form inputs */
-.modal-content input {
-    width: 90%;
-    padding: 12px;
-    margin-bottom: 14px;
-    font-size: 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* Input focus */
-.modal-content input:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-}
-
-/* Buttons container */
-.modal-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
-}
-
-/* Buttons */
-.modal-buttons button {
-    flex: 1;
-    padding: 10px 14px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-}
-
-/* Add button */
-.modal-buttons button[type="submit"] {
-    background: #3b82f6;
-    color: white;
-    margin-right: 10px;
-}
-
-/* Cancel button */
-.modal-buttons button[type="button"] {
-    background: #e5e7eb;
-    color: #374151;
-}
-
-/* Hover effects */
-.modal-buttons button:hover {
-    transform: translateY(-2px);
-}
-
-/* Subtle entrance animation */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Mobile-friendly */
-@media (max-width: 480px) {
-    .modal-content {
-        padding: 20px;
-    }
-}
-
-/* Category Select Dropdown */
-.category-select {
+  position: relative;
   width: 90%;
+  max-width: 420px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  animation: slideIn 0.3s ease-out;
+}
+
+/* ================================
+   Modal Title
+================================ */
+.modal-content h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #1f2933;
+}
+
+/* ================================
+   Form Controls (Inputs + Select)
+================================ */
+.modal-content input,
+.category-select {
+  width: 100%;
   padding: 12px;
   margin-bottom: 14px;
   font-size: 1rem;
   border: 1px solid #d1d5db;
   border-radius: 8px;
   outline: none;
-  background-color: white;
-  cursor: pointer;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  background: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Focus state */
+.modal-content input:focus,
 .category-select:focus {
   border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
-/* For Expense Modal specific */
+/* ================================
+   Category Focus Variants
+================================ */
 .expense-modal .category-select:focus {
   border-color: #ef4444;
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
 }
 
-/* For Income Modal specific */
 .income-modal .category-select:focus {
   border-color: #10b981;
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
 }
 
-/* Option styling */
+.category-select {
+  cursor: pointer;
+}
+
 .category-select option {
   padding: 10px;
+}
+
+/* ================================
+   Buttons
+================================ */
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 10px 14px;
   font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.modal-buttons button:hover {
+  transform: translateY(-2px);
+}
+
+/* Primary Button */
+.modal-buttons button[type="submit"] {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+/* Secondary Button */
+.modal-buttons button[type="button"] {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+/* ================================
+   Close (X) Button
+================================ */
+.close-x {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  font-size: 1.4rem;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-x:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+/* ================================
+   Animations
+================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   Mobile Responsive
+================================ */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 20px;
+  }
 }

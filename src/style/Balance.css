@@ -1,51 +1,134 @@
+/* ================================
+   Balance Container
+================================ */
 .balance-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.balance-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+/* Title */
+.balance-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  font-size: 1.9rem;
+  font-weight: 600;
 }
 
-.balance {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
+/* ================================
+   Summary Cards Grid
+================================ */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-.balance h3 {
-    flex: 1;
-    text-align: center;
-    padding: 15px 10px;
-    border-radius: 6px;
-    font-size: 16px;
-    background-color: #f5f5f5;
+/* ================================
+   Individual Card
+================================ */
+.summary-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.balance h3 strong {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 14px;
-    color: #555;
+.summary-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
 }
 
-/* Color coding */
-.balance h3:nth-child(1) {
-    border-top: 4px solid #3498db;
+/* ================================
+   Card Icon
+================================ */
+.card-icon {
+  font-size: 2.4rem;
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 18px;
 }
 
-.balance h3:nth-child(2) {
-    border-top: 4px solid #2ecc71;
+/* Icon Colors */
+.income-card .card-icon {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
 }
 
-.balance h3:nth-child(3) {
-    border-top: 4px solid #e74c3c;
+.expense-card .card-icon {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+.savings-card .card-icon {
+  background: rgba(59, 130, 246, 0.12);
+  color: #3b82f6;
+}
+
+/* ================================
+   Card Content
+================================ */
+.card-content {
+  flex: 1;
+}
+
+.card-title {
+  margin: 0 0 6px 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #6b7280;
+}
+
+.card-amount {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* Amount Colors */
+.card-amount.positive {
+  color: #10b981;
+}
+
+.card-amount.negative {
+  color: #ef4444;
+}
+
+/* ================================
+   Responsive
+================================ */
+@media (max-width: 900px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card {
+    padding: 16px;
+  }
+
+  .card-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 2rem;
+    margin-right: 14px;
+  }
+
+  .card-amount {
+    font-size: 1.5rem;
+  }
 }

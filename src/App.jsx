@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import HomePage from './pages/HomePage.jsx';
-import './App.css';
 
 export default function App() {
   const [transactions, setTransactions] = useState(() => {
     const saved = localStorage.getItem("transactions");
-    return saved ? JSON.parse(saved) : [];
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      // Add date to existing transactions if missing
+      return parsed.map(transaction => ({
+        ...transaction,
+        date: transaction.date || new Date().toISOString().split('T')[0]
+      }));
+    }
+    return [];
   });
 
   useEffect(() => {
@@ -21,6 +28,15 @@ export default function App() {
     setTransactions(prev => prev.filter(transaction => transaction.id !== id));
   };
 
+  // ADD THIS FUNCTION FOR EDITING
+  const updateTransaction = (updatedTransaction) => {
+    setTransactions(prev => 
+      prev.map(transaction => 
+        transaction.id === updatedTransaction.id ? updatedTransaction : transaction
+      )
+    );
+  };
+
   return(
     <BrowserRouter>
       <Routes>
@@ -31,6 +47,7 @@ export default function App() {
               transactions={transactions} 
               addTransaction={addTransaction} 
               deleteTransaction={deleteTransaction}
+              updateTransaction={updateTransaction} // PASS THIS
             />
           }
         />

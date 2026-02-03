@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Trsansactions from "./Trsansactions";
 import "../style/TransactionList.css";
 
-export default function TransactionList({ transactions, deleteTransaction }) {
+export default function TransactionList({ transactions, deleteTransaction , editTransaction }) {
     return (
         <div className="transaction-list-container">
             <h2>Transaction History</h2>
@@ -17,6 +17,7 @@ export default function TransactionList({ transactions, deleteTransaction }) {
                             key={t.id}
                             {...t}
                             onDelete={deleteTransaction}
+                             onEdit={editTransaction} 
                         />
                     ))}
                 </ul>
@@ -27,5 +28,6 @@ export default function TransactionList({ transactions, deleteTransaction }) {
 
 TransactionList.propTypes = {
     transactions: PropTypes.array.isRequired,
-    deleteTransaction: PropTypes.func.isRequired
+    deleteTransaction: PropTypes.func.isRequired,
+    editTransaction: PropTypes.func.isRequired
 };
