@@ -32,8 +32,6 @@ This app helps users manage their finances, track income and expenses, and visua
 
 ## 📸 Screenshots
 
-> Replace these with your actual screenshots
-
 ![Home Page-1](public/SS//Home1.png)
 ![Home Page-2](public/SS//Home2.png)
 ![Home Page-3](public/SS//Home3.png)
